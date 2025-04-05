@@ -1,11 +1,11 @@
 {
     "id": "0AE03A30",
-    "path": "~/MY DOCS/ML-OPTIMIZATION/untitled folder-B/project-b/Untitled.Rmd",
-    "project_path": "Untitled.Rmd",
+    "path": "~/MY DOCS/ML-OPTIMIZATION/untitled folder-B/project-b/haudipud-project-part-b.Rmd",
+    "project_path": "haudipud-project-part-b.Rmd",
     "type": "r_markdown",
-    "hash": "369863419",
+    "hash": "3530148793",
     "contents": "",
-    "dirty": false,
+    "dirty": true,
     "created": 1743806229888.0,
     "source_on_save": false,
     "relative_order": 1,
@@ -18,11 +18,11 @@
         "scrollLine": "165"
     },
     "folds": "",
-    "lastKnownWriteTime": 1743806789,
+    "lastKnownWriteTime": 1743813965,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1743810797436,
+    "last_content_update": 1743813965,
     "read_only": false,
     "read_only_alternatives": []
 }
