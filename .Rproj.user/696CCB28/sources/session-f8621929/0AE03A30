@@ -3,9 +3,9 @@
     "path": "~/MY DOCS/ML-OPTIMIZATION/untitled folder-B/project-b/haudipud-project-part-b.Rmd",
     "project_path": "haudipud-project-part-b.Rmd",
     "type": "r_markdown",
-    "hash": "3530148793",
+    "hash": "0",
     "contents": "",
-    "dirty": true,
+    "dirty": false,
     "created": 1743806229888.0,
     "source_on_save": false,
     "relative_order": 1,
@@ -14,15 +14,15 @@
         "chunk_output_type": "inline",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "185,0",
-        "scrollLine": "165"
+        "cursorPosition": "187,0",
+        "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1743813965,
+    "lastKnownWriteTime": 1743814820,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1743813965,
+    "last_content_update": 1743814820978,
     "read_only": false,
     "read_only_alternatives": []
 }
