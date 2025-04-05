@@ -1,0 +1,92 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(dplyr)
+
+# Load annotation CSV
+annotations <- read.csv("ProjectData_ForClass_v2-3/Annotation.csv")
+
+# Rename columns
+names(annotations) <- c("Index", "Panel", "Tree", "Animal", "Mythology", "Comments")
+
+# Create label dataframes (1 if >= 3, else 0)
+tree_labels <- annotations %>%
+  select(image = Panel, label = Tree) %>%
+  mutate(label = ifelse(label >= 3, 1, 0)) %>%
+  filter(!is.na(label))
+
+animal_labels <- annotations %>%
+  select(image = Panel, label = Animal) %>%
+  mutate(label = ifelse(label >= 3, 1, 0)) %>%
+  filter(!is.na(label))
+
+myth_labels <- annotations %>%
+  select(image = Panel, label = Mythology) %>%
+  mutate(label = ifelse(label >= 3, 1, 0)) %>%
+  filter(!is.na(label))
+
+# Create output folder if needed
+if (!dir.exists("Output")) dir.create("Output")
+
+# Save label objects
+save(tree_labels, animal_labels, myth_labels, file = "Output/labels.RData")
+```
+
+
+```{r}
+library(EBImage)
+library(dplyr)
+
+# Get all image paths
+img_paths <- list.files("ProjectData_ForClass_v2-3", pattern = ".jpg$", full.names = TRUE, recursive = TRUE)
+
+# Feature extractor
+extract_features <- function(img_path) {
+  img <- readImage(img_path)
+  gray <- channel(img, "gray")
+  resized <- resize(gray, 32, 32)
+  vec <- as.vector(resized)
+  image_name <- basename(img_path)
+  return(data.frame(t(vec), image = image_name, stringsAsFactors = FALSE))
+}
+
+# Extract from all images
+feature_list <- lapply(img_paths, extract_features)
+features_df <- bind_rows(feature_list)
+
+# Save
+save(features_df, file = "Output/features.RData")
+
+```
+
+
+```{r}
+library(dplyr)
+
+# Load
+load("Output/features.RData")
+load("Output/labels.RData")
+
+prepare_dataset <- function(labels_df, features_df) {
+  merged <- inner_join(features_df, labels_df, by = "image")
+  return(merged)
+}
+
+# Create datasets
+tree_data <- prepare_dataset(tree_labels, features_df)
+animal_data <- prepare_dataset(animal_labels, features_df)
+myth_data <- prepare_dataset(myth_labels, features_df)
+
+# Save datasets
+save(tree_data, animal_data, myth_data, file = "Output/datasets.RData")
+
+```
+
+
+```{r}
+
+```
+
